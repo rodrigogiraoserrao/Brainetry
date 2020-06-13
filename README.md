@@ -33,11 +33,11 @@ The easiest way to run a **Brainetry** program is by saving it in a `.btry` file
 
 ## Command Line Interface
 
-The command line interface (`cli.py`) can
+The command line interface (`cli.py`) has three main use cases:
 
  - interpret **Brainetry** code;
  - translate "extended" brainf\*ck code into **Brainetry** by making use of the [infamous Lorem Ipsum placeholder text](https://www.lipsum.com/);
- - translate **Brainetry** code into "extended" brainf\*ck code (using the `«` and `»` operators that aren't really from brainf\*ck).
+ - translate **Brainetry** code into "extended" brainf\*ck code (using the `«`, `»`, `(` and `)` operators that aren't really from brainf\*ck).
 
 Running `cli.py -h` you get this help message:
 
@@ -133,7 +133,7 @@ This one, unlike the first one, is NOT
 native brainf*ck code.
 This one, like the previous one,
 uses an operator that was freshly introduced in Brainetry:
-«
+»
 This is the operator that I will use
 to code YET another cat program ...
 Tired yet ???
