@@ -83,9 +83,11 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.input:
         if args.input.endswith(".bf") or args.input.endswith(".btry"):
+            print("(Brainetry CLI: reading input from file.)")
             with open(args.input, "r") as f:
                 inp = f.read()
         else:
+            print("(Brainetry CLI: assuming literal input.)")
             inp = args.input
 
         if args.btry2bf:
