@@ -23,7 +23,7 @@
 
 **Brainetry** program execution happens on top of a tape that can be extended indefinitely in both directions and whose values wrap at `256`. The tape starts out as a single cell with a value of `0` and whenever the tape pointer moves out of the tape, a new cell with the value `0` is created, extending the tape. The operator `«` sends the pointer to the left edge of the tape and the `»` operator sends the pointer to the right edge of the tape.
 
-For **Brainetry**, a "word" is any sequence of non-space characters, so the line `"   thisis 1 really       weirdly formatted    line "` counts as having `6` words.
+For **Brainetry**, a "word" is any sequence of non-space characters, so the line _"&nbsp;&nbsp;&nbsp; thisis 1 really&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;weirdly formatted&nbsp;&nbsp;&nbsp;&nbsp;line "_ counts as having `6` words.
 
 If you don't know how to code in brainf*ck you will have a hard time coding in **Brainetry**.
 
@@ -31,7 +31,7 @@ If you don't know how to code in brainf*ck you will have a hard time coding in *
 
 The easiest way to run a **Brainetry** program is by saving it in a `.btry` file and passing it to the CLI explained below. Additionally, you can try it online by clicking the badge below,
 
-## [![Run on Repl.it](https://repl.it/badge/github/rojergs/brainetry)](https://repl.it/github/rojergs/brainetry)
+[![Run on Repl.it](https://repl.it/badge/github/rojergs/brainetry)](https://repl.it/github/rojergs/brainetry)
 
 by writing your source code in the `btry/replit.btry` file and pressing the green "Run" button.
 
