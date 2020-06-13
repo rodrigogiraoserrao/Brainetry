@@ -245,11 +245,14 @@ def I(l, i, p=0, m=[0]):
             m[p] = ord(c)
         elif 7 == n:
             print(chr(m[p]), end="")
-        elif 8 == n:
+        elif n in [8, 10]:
+            d = 2 if n == 10 else 0
             t = 1
-            g = [t := t + (k==8) - (k==9) for k in l].index(0)
-            while m[p]:
+            g = [t := t + (k == 8+d) - (k == 9+d) for k in l].index(0)
+            f = True
+            while m[p] and f:
                 i, p, m = I(l[:g], i, p, m)
+                f = (n == 8)
             l = l[g:]
     return i, p, m
 

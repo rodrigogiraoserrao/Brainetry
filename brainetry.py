@@ -12,4 +12,5 @@ def I(l,i,p=0,m=[0]):
    while m[p] and f:i,p,m=I(l[:g],i,p,m); f=n==8
    l=l[g:]
  return i,p,m
-def E(c): I([len([*filter(bool,l.split(" "))])for l in c.split("\n")],input(" inp >> ")); print()
+
+def E(c): I([len([*filter(bool,l.split(" "))])for l in c.split("\n")],input(" inp >> ")if ","in c else""); print()
