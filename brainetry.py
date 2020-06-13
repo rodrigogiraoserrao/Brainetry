@@ -6,9 +6,10 @@ def I(l,i,p=0,m=[0]):
   elif n in[4,5]: m[p]+=1-[4,0,5].index(n); m[p]%=256
   elif 6==n: c,*i=i or "\u0000"; m[p]=ord(c)
   elif 7==n: print(chr(m[p]), end="")
-  elif 8==n:
-   g=(t:=1)and[t:=t+(k==8)-(k==9)for k in l].index(0)
-   while m[p]:i,p,m=I(l[:g],i,p,m)
+  elif n in[8,10]:
+   d=2*(n==10); f=True
+   g=(t:=1)and[t:=t+(k==8+d)-(k==9+d)for k in l].index(0)
+   while m[p] and f:i,p,m=I(l[:g],i,p,m); f=n==8
    l=l[g:]
  return i,p,m
 def E(c): I([len([*filter(bool,l.split(" "))])for l in c.split("\n")],input(" inp >> ")); print()
