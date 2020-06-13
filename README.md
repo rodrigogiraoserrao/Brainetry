@@ -255,13 +255,14 @@ def I(l, i, p=0, m=[0]):
                 f = (n == 8)
             l = l[g:]
     return i, p, m
-
+def E(c): I([len([*filter(bool,l.split(" "))])for l in c.split("\n")],input(" inp >> ")if ","in c else""); print()
 def E(c):
-    l = [*map(len, filter(
+    l = [len([*filter(
         bool,
-        [l.split(" ")for l in c.split("\n")]
-    ))]
-    I(l, input(" inp >> "))
+        l.split(" "))]) for l in c.split("\n")
+    ]
+    i = input(" inp >> ") if "," in c else ""
+    I(l, i)
     print()
 ```
 
