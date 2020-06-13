@@ -2,8 +2,6 @@
 
 **Brainetry** is an [esoteric programming language][eso-pl] derived from [brainf*ck][brainfuck] and [Poetic][poetic]. Its name is a (bad) play on "brainf*ck" and "poetry".
 
-To try it online, [![Run on Repl.it](https://repl.it/badge/github/rojergs/brainetry)](https://repl.it/github/rojergs/brainetry)
-
 # Coding in **Brainetry**
 
 **Brainetry** builds on top of the eight operators brainf\*ck programs have. Below you can find a correspondence between the number of words in a line and the corresponding brainf\*ck operators. The `»`, `«`, `(` and `)` operators are new in **Brainetry** and are _not_ inherited from brainf\*ck. We present the symbols because those are relevant for the CLI provided.
@@ -31,7 +29,11 @@ If you don't know how to code in brainf*ck you will have a hard time coding in *
 
 # Usage
 
-The easiest way to run a **Brainetry** program is by saving it in a `.btry` file and passing it to the CLI explained below.
+The easiest way to run a **Brainetry** program is by saving it in a `.btry` file and passing it to the CLI explained below. Additionally, you can try it online by clicking the badge below,
+
+## [![Run on Repl.it](https://repl.it/badge/github/rojergs/brainetry)](https://repl.it/github/rojergs/brainetry)
+
+by writing your source code in the `btry/replit.btry` file and pressing the green "Run" button.
 
 ## Command Line Interface
 
