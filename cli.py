@@ -24,7 +24,7 @@ def bf2btry(code):
     from lorem import lorem
 
     while "\n" in lorem:
-        lorem = lorem.replace("\n", "")
+        lorem = lorem.replace("\n", " ")
     lorem = lorem.split(" ")
 
     result = ""
