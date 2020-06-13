@@ -1,0 +1,10 @@
+This Brainetry program takes some input
+and then proceeds to outputting much like cat.
+Except for
+one small teeny weeny little detail:
+It uses an operator that is unique to Brainetry.
+
+The empty line operator, whose purpose is to
+reset the tape pointer to the beginning.
+Lovely, right?
+Some day I'll use it for the greater good.
