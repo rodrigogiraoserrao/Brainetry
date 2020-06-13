@@ -15,7 +15,7 @@ def btry2bf(code):
         n = len([*filter(bool, line.split(" "))])
         if n > 9:
             continue
-        result += "«»><+-,.[]"[n]
+        result += "«»><+-,.[]()"[n]
     return result
 
 def bf2btry(code):
@@ -29,7 +29,7 @@ def bf2btry(code):
 
     result = ""
     source = lorem[::]
-    ops = "«»><+-,.[]"
+    ops = "«»><+-,.[]()"
     ops_is = []
     for c in code:
         if c == "\n":

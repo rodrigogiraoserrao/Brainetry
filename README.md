@@ -4,7 +4,7 @@
 
 # Coding in **Brainetry**
 
-**Brainetry** builds on top of the eight operators brainf\*ck programs have. Below you can find a correspondence between the number of words in a line and the corresponding brainf\*ck operators. The `»` and `«` operators are new in **Brainetry** and are _not_ inherited from brainf\*ck.
+**Brainetry** builds on top of the eight operators brainf\*ck programs have. Below you can find a correspondence between the number of words in a line and the corresponding brainf\*ck operators. The `»`, `«`, `(` and `)` operators are new in **Brainetry** and are _not_ inherited from brainf\*ck. We present the symbols because those are relevant for the CLI provided.
 
 | Words in a line | (brainf*ck) operator | effect on tape |
 |-----------------|----------------------|----------------|
