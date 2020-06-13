@@ -261,7 +261,7 @@ def E(c):
         bool,
         l.split(" "))]) for l in c.split("\n")
     ]
-    i = input(" inp >> ") if "," in c else ""
+    i = input(" inp >> ") if 6 in l else ""
     I(l, i)
     print()
 ```

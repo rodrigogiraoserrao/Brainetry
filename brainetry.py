@@ -13,4 +13,4 @@ def I(l,i,p=0,m=[0]):
    l=l[g:]
  return i,p,m
 
-def E(c): I([len([*filter(bool,l.split(" "))])for l in c.split("\n")],input(" inp >> ")if ","in c else""); print()
+def E(c): I(l:=[len([*filter(bool,l.split(" "))])for l in c.split("\n")],input(" inp >> ")if 6 in l else""); print()
