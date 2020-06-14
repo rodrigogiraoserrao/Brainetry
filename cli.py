@@ -42,6 +42,7 @@ def bf2btry(code):
             new = " ".join(source[:i])
             source = source[i:]
             result += new + "\n"
+    result = result[:-1]
 
     return ops_is, result
 
