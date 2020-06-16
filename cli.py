@@ -5,7 +5,7 @@ Command Line Interface (CLI) for the Brainetry programming language.
 import argparse
 import sys
 
-from brainetry import E
+from brainetry import E, mpp
 
 def btry2bf(code):
     """Translate a brainetry program to brainfuck."""
@@ -60,16 +60,19 @@ def golf(inp):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("input", help="input to the Brainetry CLI")
+    parser.add_argument("source", help="source code/file to the brainetry CLI")
+    parser.add_argument("-d", "--debug", action="count", default=0,
+        help="define debug level with -d, -dd or -ddd"
+    )
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
         "--btry2bf", action="store_true", default=False,
-        help="translate brainetry to brainfuck"
+        help="translate brainetry to extended brainfuck"
     )
     group.add_argument(
         "--bf2btry", action="store_true", default=False,
-        help="translate brainfuck to brainetry"
+        help="translate extended brainfuck to brainetry"
     )
     group.add_argument(
         "-g", "--golf", action="store_true", default=False,
@@ -77,8 +80,8 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "-o", "--output", metavar="output-to",
-        help="path to file to write output to; use with --bf2btry or --btry2bf"
+        "-o", "--output", metavar="out-file",
+        help="redirect output to file"
     )
 
     args = parser.parse_args()
@@ -106,7 +109,9 @@ if __name__ == "__main__":
             print(r)
             print(f"Golfed from {len(inp)} to {len(r)} bytes.")
         else:
-            E(inp)
+            i, p, m, o = E(inp, de=args.debug)
+            if args.debug:
+                print(f"Final state: m[{p}]={m[p]} @ {mpp(m, p)}")
             r = ""
 
         if (outfile := args.output) and r:
