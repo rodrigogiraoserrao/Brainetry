@@ -85,14 +85,14 @@ if __name__ == "__main__":
     )
 
     args = parser.parse_args()
-    if args.input:
-        if args.input.endswith(".bf") or args.input.endswith(".btry"):
+    if args.source:
+        if args.source.endswith(".bf") or args.source.endswith(".btry"):
             print("(Brainetry CLI: reading source code from file.)")
-            with open(args.input, "r") as f:
+            with open(args.source, "r") as f:
                 inp = f.read()
         else:
             print("(Brainetry CLI: assuming literal input.)")
-            inp = args.input
+            inp = args.source
 
         if args.btry2bf:
             r = btry2bf(inp)
