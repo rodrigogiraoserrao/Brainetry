@@ -14,7 +14,7 @@ def I(l,i,p=0,m=[0],o="",r=0,de=0):
   elif n in[8,10]:
    d=2*(n==10); f=True
    g=(t:=1)and[t:=t+(Oi(k)==8+d)-(Oi(k)==9+d)for k in l].index(0)
-   while m[p] and f:i,p,m,o=I(l[:g],i,p,m,o,r+1,de); f=n==8
+   while m[p] and f:i,p,m,o=I(l[:g+1],i,p,m,o,r+1,de); f=n==8
    l=l[g:]
  return i,p,m,o
 
