@@ -8,8 +8,8 @@
 
 Being an [esoteric programming language] means you will program in **brainetry** mostly for fun and not because you are writing real world applications.
 
-**Brainetry** programs represent a superset of the programs one can write in brainf\*ck and that is **brainetry**'s main inspiration, the infinite tape with finite cell size model that brainf\*ck has.
-Notice that brainf\*ck is [Turing complete] so **brainetry** is also Turing complete.
+**Brainetry** programs represent a superset of the programs one can write in brainf\*ck and that is **brainetry**'s main inspiration, the brainf\*ck model: the infinite tape with finite cell size.
+Note that brainf\*ck is [Turing complete] so **brainetry** is also Turing complete.
 Poetic is a language that maps directly to brainf\*ck and where instructions are encoded in the size of the words, which is similar to **brainetry**, except in **brainetry** what matters is the size of the lines and possibly punctuation marks used in each line.
 
 ## Why brainetry?
@@ -50,4 +50,4 @@ So far, the only contributor to this project has been [RojerGS] but contribution
 [RojerGS]: https://github.com/RojerGS
 [open an issue]: https://github.com/RojerGS/Brainetry/issues/new
 [make a PR]: https://github.com/RojerGS/Brainetry/compare
-[wiki]: ./wiki
+[wiki]: https://github.com/RojerGS/Brainetry/wiki
