@@ -102,7 +102,7 @@ if __name__ == "__main__":
             print(ops)
             print(r)
         elif args.golf:
-            if not args.input.endswith(".btry"):
+            if not args.source.endswith(".btry"):
                 parser.print_help()
                 sys.exit(0)
             r = golf(inp)
