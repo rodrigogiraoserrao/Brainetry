@@ -34,6 +34,10 @@ cd brainetry
 ./brainetry.py btry/hello_world.btry
 ```
 
+## Learn more
+
+If you want to find out more about **brainetry**, head over to this repo's [wiki]! You can learn to code in **brainetry**, you will see some example programs or maybe check an alternative Python implementation of the interpreter.
+
 ## Contributors
 
 So far, the only contributor to this project has been [RojerGS] but contributions are much welcome. Feel free to [open an issue] or [make a PR] if you have anything to discuss/add!
@@ -46,3 +50,4 @@ So far, the only contributor to this project has been [RojerGS] but contribution
 [RojerGS]: https://github.com/RojerGS
 [open an issue]: https://github.com/RojerGS/Brainetry/issues/new
 [make a PR]: https://github.com/RojerGS/Brainetry/compare
+[wiki]: ./wiki
