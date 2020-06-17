@@ -1,2 +1,2 @@
 language = "python3"
-run = "python cli.py btry/replit.btry"
+run = "python brainetry.py btry/replit.btry"
