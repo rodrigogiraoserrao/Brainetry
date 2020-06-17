@@ -4,7 +4,7 @@
 
 ## What is brainetry?
 
-**Brainetry** is an esoteric programming language that was inspired by the [brainf\*ck] and [poetic] programming languages.
+**Brainetry** is an esoteric programming language that was inspired by the [brainf*ck] and [poetic] programming languages.
 
 Being an [esoteric programming language] means you will program in **brainetry** mostly for fun and not because you are writing real world applications.
 
@@ -17,6 +17,8 @@ Poetic is a language that maps directly to brainf\*ck and where instructions are
 Again, **brainetry** is an esoteric programming language so do not expect it to be the programming language in which you are going to write your next app with. You are free to give it a try, of course, and let me know how it goes!
 
 Other than that, I will expect you to program in **brainetry** only for the fun of it.
+
+I have found it to be very amuzing to write self-referential **brainetry** programs, often programs that explain themselves.
 
 ## Get started!
 
