@@ -31,7 +31,7 @@ You can also clone this repository and use the CLI tool provided to run **braine
 ```
 git clone https://github.com/rojergs/brainetry
 cd brainetry
-./cli.py btry/hello_world.btry
+./brainetry.py btry/hello_world.btry
 ```
 
 ## Contributors
