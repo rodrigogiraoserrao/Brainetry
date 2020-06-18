@@ -2,24 +2,7 @@
 
 **Brainetry** is an [esoteric programming language][eso-pl] derived from [brainf*ck][brainfuck] and [Poetic][poetic]. Its name is a (bad) play on "brainf*ck" and "poetry".
 
-# Coding in **Brainetry**
 
-**Brainetry** builds on top of the eight operators brainf\*ck programs have. Below you can find a correspondence between the number of words in a line and the corresponding brainf\*ck operators. The `»`, `«`, `(` and `)` operators are new in **Brainetry** and are _not_ inherited from brainf\*ck. We present the symbols because those are relevant for the CLI provided.
-
-| Words in a line | (brainf*ck) operator | effect on tape |
-|-----------------|----------------------|----------------|
-| 0 | `«` | moves pointer to the left edge of the tape |
-| 1 | `»` | moves pointer to the right edge of the tape |
-| 2 | `>` | moves pointer one cell to the right (extends tape if needed) |
-| 3 | `<` | moves pointer one cell to the left (extends tape if needed) |
-| 4 | `+` | increments current cell by `1` (wraps at `256`) |
-| 5 | `-` | decrements current cell by `1` (wraps at `256`) |
-| 6 | `,` | reads one character from input |
-| 7 | `.` | writes one character to output |
-| 8 | `[` | enters `[]` if current cell is not zero (akin to a `while` loop) |
-| 9 | `]` | moves code execution to matching `[` |
-| 10| `(` | enters `()` if current cell is not zero (akin to an `if` statement) |
-| 11| `)` | signals the end of the matching `(` code |
 
 **Brainetry** program execution happens on top of a tape that can be extended indefinitely in both directions and whose values wrap at `256`. The tape starts out as a single cell with a value of `0` and whenever the tape pointer moves out of the tape, a new cell with the value `0` is created, extending the tape. The operator `«` sends the pointer to the left edge of the tape and the `»` operator sends the pointer to the right edge of the tape.
 
@@ -222,54 +205,3 @@ for real,
 a really awesome gift
 from the mathematicians of yor to us.
 ```
-
-# Implementation
-
-The implementation - in Python - can be found in the `brainetry.py` file; notice that the Python style used in that file was a proof of concept for something unrelated to this project and thus may strike as weird Python code.
-
-The implementation can be restyled into:
-
-```py
-def I(l, i, p=0, m=[0]):
-    while l:
-        n, *l = l
-        if n in [0, 1]:
-            p = n*(len(m) - 1)
-        elif n in [2, 3]:
-            p += 1 - [2, 0, 3].index(n)
-            m = [0]*(p<0) + m + [0]*(p==len(m))
-            p = max(0, p)
-        elif n in [4, 5]:
-            m[p] += 1 - [4, 0, 5].index(n)
-            m[p] %= 256
-        elif 6 == n:
-            if not i:
-                i = "\u0000"
-            c, *i = i
-            m[p] = ord(c)
-        elif 7 == n:
-            print(chr(m[p]), end="")
-        elif n in [8, 10]:
-            d = 2 if n == 10 else 0
-            t = 1
-            g = [t := t + (k == 8+d) - (k == 9+d) for k in l].index(0)
-            f = True
-            while m[p] and f:
-                i, p, m = I(l[:g], i, p, m)
-                f = (n == 8)
-            l = l[g:]
-    return i, p, m
-
-def E(c):
-    l = [len([*filter(
-        bool,
-        l.split(" "))]) for l in c.split("\n")
-    ]
-    i = input(" inp >> ") if 6 in l else ""
-    I(l, i)
-    print()
-```
-
-[eso-pl]: https://en.wikipedia.org/wiki/Esoteric_programming_language
-[brainfuck]: https://esolangs.org/wiki/Brainfuck
-[poetic]: https://mcaweb.matc.edu/winslojr/vicom128/final/

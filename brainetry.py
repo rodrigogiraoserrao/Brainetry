@@ -3,9 +3,11 @@ Command Line Interface (CLI) for the Brainetry programming language.
 """
 
 import argparse
+import os
 import sys
 
-from interpreter import E, mpp
+import interpreter
+from interpreter import E, O, mpp
 
 def btry2bf(code):
     """Translate a brainetry program to brainfuck."""
@@ -13,9 +15,9 @@ def btry2bf(code):
     result = ""
     for line in code.split("\n"):
         n = len([*filter(bool, line.split(" "))])
-        if n > 9:
+        if n >= len(interpreter.O):
             continue
-        result += "«»><+-,.[]()"[n]
+        result += interpreter.O[n]
     return result
 
 def bf2btry(code):
@@ -25,16 +27,17 @@ def bf2btry(code):
 
     while "\n" in lorem:
         lorem = lorem.replace("\n", " ")
+    while "  " in lorem:
+        lorem = lorem.replace("  ", " ")
     lorem = lorem.split(" ")
 
     result = ""
     source = lorem[::]
-    ops = "«»><+-,.[]()"
     ops_is = []
     for c in code:
         if c == "\n":
             result += c
-        if c in ops:
+        if c in interpreter.O:
             i = ops.index(c)
             ops_is.append(i)
             if i > len(source):
@@ -47,7 +50,7 @@ def bf2btry(code):
     return ops_is, result
 
 def golf(inp):
-    """Golf a Brainetry program to the maximum."""
+    """Golf a Brainetry program."""
 
     r = ""
     for line in inp.split("\n"):
@@ -64,6 +67,13 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--debug", action="count", default=0,
         help="define debug level with -d, -dd or -ddd"
     )
+    parser.add_argument("--live-output", action="store_true", default=False,
+        help="force program execution to print output while running"
+    )
+    parser.add_argument(
+        "-o", "--output", metavar="file",
+        help="redirect output to file"
+    )
 
     group = parser.add_mutually_exclusive_group()
     group.add_argument(
@@ -77,11 +87,6 @@ if __name__ == "__main__":
     group.add_argument(
         "-g", "--golf", action="store_true", default=False,
         help="golf a .btry program to single-character words"
-    )
-
-    parser.add_argument(
-        "-o", "--output", metavar="out-file",
-        help="redirect output to file"
     )
 
     args = parser.parse_args()
@@ -109,10 +114,11 @@ if __name__ == "__main__":
             print(r)
             print(f"Golfed from {len(inp)} to {len(r)} bytes.")
         else:
-            i, p, m, o = E(inp, de=args.debug)
+            os.environ["BTRY_LO"] = int(args.live_output)
+            i, p, m, o = interpreter.E(inp, de=args.debug)
             print(o)
             if args.debug:
-                print(f"Final state: m[{p}]={m[p]} @ {mpp(m, p)}")
+                print(f"Final state: m[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
             r = ""
 
         if (outfile := args.output) and r:
