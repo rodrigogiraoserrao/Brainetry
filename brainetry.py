@@ -66,30 +66,31 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--debug", action="count", default=0,
         help="define debug level with -d, -dd or -ddd"
     )
+    parser.add_argument(
+        "-w", "--wrap-at", metavar="cell_size", type=int, default=256,
+        help="cells wrap at this value (defaults to 256); use 0 for no wrapping"
+    )
     parser.add_argument("--live-output", action="store_true", default=False,
         help="force program execution to print output while running"
     )
     parser.add_argument(
-        "-o", "--output", metavar="file",
-        help="redirect output to file"
+        "-o", "--output", metavar="file", help="redirect output to file"
     )
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument(
-        "--btry2bf", action="store_true", default=False,
+    group.add_argument("--btry2bf", action="store_true", default=False,
         help="translate brainetry to extended brainfuck"
     )
-    group.add_argument(
-        "--bf2btry", action="store_true", default=False,
+    group.add_argument("--bf2btry", action="store_true", default=False,
         help="translate extended brainfuck to brainetry"
     )
-    group.add_argument(
-        "-g", "--golf", action="store_true", default=False,
-        help="golf a .btry program to single-character words"
+    group.add_argument("-g", "--golf", action="store_true", default=False,
+        help="auto-golf a .btry program"
     )
 
     args = parser.parse_args()
     if args.source:
+        # Get input from the correct source
         if args.source.endswith(".bf") or args.source.endswith(".btry"):
             print("(Brainetry CLI: reading source code from file.)")
             with open(args.source, "r") as f:
@@ -113,12 +114,15 @@ if __name__ == "__main__":
             print(r)
             print(f"Golfed from {len(inp)} to {len(r)} bytes.")
         else:
-            os.environ["BTRY_LO"] = str(args.live_output)
-            i, p, m, o = interpreter.E(inp, de=args.debug)
+            env = {
+                "LO": args.live_output,
+                "W": args.wrap_at,
+            }
+            i, p, m, o = interpreter.E(inp, de=args.debug, env=env)
             print(o)
             if args.debug:
                 print(f"Final state: m[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
-            r = ""
+            r = o
 
         if (outfile := args.output) and r:
             with open(outfile, "w") as f:
