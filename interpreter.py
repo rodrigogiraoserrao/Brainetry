@@ -20,7 +20,7 @@ def I(l,i,p=0,m=[0],o="",r=0,de=0,_=None):
  return i,p,m,o
 
 def E(c,de=0):
- import os; G=os.environ.get; _w=float(G("BTRY_W",256)); _lo=bool(int(G("BTRY_LO",0)))
+ import os; G=os.environ.get; _w=float(G("BTRY_W",256)); _lo=eval(G("BTRY_LO",False))
  _W=lambda v: int(v%_w); _LO=lambda c,o: (_lo and print(c,end=""))or o+c; _=[_W,_LO]
  l=[O[len([*filter(bool,l.split(" "))])]for l in c.split("\n")]
- i,p,m,o=I(l,input(" inp >> ")if "," in l else"",r=0,de=de,_=_); return i,p,m,o
+ i,p,m,o=I(l,input(" inp >> ")if "," in l else"",r=0,de=de,_=_); (_lo and print()); return i,p,m,o

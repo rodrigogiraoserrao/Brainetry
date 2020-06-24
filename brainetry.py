@@ -7,7 +7,6 @@ import os
 import sys
 
 import interpreter
-from interpreter import E, O, mpp
 
 def btry2bf(code):
     """Translate a brainetry program to brainfuck."""
@@ -38,7 +37,7 @@ def bf2btry(code):
         if c == "\n":
             result += c
         if c in interpreter.O:
-            i = ops.index(c)
+            i = interpreter.O.index(c)
             ops_is.append(i)
             if i > len(source):
                 source += lorem[::]
@@ -114,7 +113,7 @@ if __name__ == "__main__":
             print(r)
             print(f"Golfed from {len(inp)} to {len(r)} bytes.")
         else:
-            os.environ["BTRY_LO"] = int(args.live_output)
+            os.environ["BTRY_LO"] = str(args.live_output)
             i, p, m, o = interpreter.E(inp, de=args.debug)
             print(o)
             if args.debug:
