@@ -34,6 +34,8 @@ cd brainetry
 ./brainetry.py btry/hello_world.btry
 ```
 
+Be sure to be running Python 3.8 or higher!
+
 ## Learn more
 
 If you want to find out more about **brainetry**, head over to this repo's [wiki]! You can learn to code in **brainetry**, you will see some example programs or maybe check an alternative Python implementation of the interpreter.

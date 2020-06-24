@@ -67,8 +67,8 @@ if __name__ == "__main__":
         help="define debug level with -d, -dd or -ddd"
     )
     parser.add_argument(
-        "-w", "--wrap-at", metavar="cell_size", type=int, default=256,
-        help="cells wrap at this value (defaults to 256); use 0 for no wrapping"
+        "-w", "--wrap-at", metavar="cell_size", type=float, default=256,
+        help="cells wrap at this value (defaults to 256); use 'inf' for no wrapping"
     )
     parser.add_argument("--live-output", action="store_true", default=False,
         help="force program execution to print output while running"
@@ -119,6 +119,8 @@ if __name__ == "__main__":
                 "W": args.wrap_at,
             }
             i, p, m, o = interpreter.E(inp, de=args.debug, env=env)
+            if args.live_output:
+                o = "(Full program output >>>\n" + o + "\n<<<)"
             print(o)
             if args.debug:
                 print(f"Final state: m[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
