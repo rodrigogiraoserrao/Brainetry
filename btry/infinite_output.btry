@@ -1,0 +1,4 @@
+Lets produce infinite output.
+This is really simple, all it takes is:
+A cell with a non zero value
+and the --live-output flag also needs to be on.
