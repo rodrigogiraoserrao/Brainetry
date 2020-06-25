@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Command Line Interface (CLI) for the Brainetry programming language.
 """
@@ -8,7 +9,7 @@ import sys
 
 import interpreter
 
-def btry2bf(code):
+def btry2symb(code):
     """Translate a brainetry program to brainfuck."""
 
     result = ""
@@ -19,7 +20,7 @@ def btry2bf(code):
         result += interpreter.O[n]
     return result
 
-def bf2btry(code):
+def symb2btry(code):
     """Translate a brainfuck program to brainetry."""
 
     from lorem import lorem
@@ -78,11 +79,11 @@ if __name__ == "__main__":
     )
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument("--btry2bf", action="store_true", default=False,
-        help="translate brainetry to extended brainfuck"
+    group.add_argument("--btry2symb", action="store_true", default=False,
+        help="translate brainetry to symbolic operators"
     )
-    group.add_argument("--bf2btry", action="store_true", default=False,
-        help="translate extended brainfuck to brainetry"
+    group.add_argument("--symb2btry", action="store_true", default=False,
+        help="translate symbolic operators to brainetry"
     )
     group.add_argument("-g", "--golf", action="store_true", default=False,
         help="auto-golf a .btry program"
@@ -99,11 +100,11 @@ if __name__ == "__main__":
             print("(Brainetry CLI: assuming literal input.)")
             inp = args.source
 
-        if args.btry2bf:
-            r = btry2bf(inp)
+        if args.btry2symb:
+            r = btry2symb(inp)
             print(r)
-        elif args.bf2btry:
-            ops, r = bf2btry(inp)
+        elif args.symb2btry:
+            ops, r = symb2btry(inp)
             print(ops)
             print(r)
         elif args.golf:
