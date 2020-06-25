@@ -10,18 +10,19 @@ import sys
 import interpreter
 
 def btry2symb(code):
-    """Translate a brainetry program to brainfuck."""
+    """Translate a brainetry program to symbolic operators."""
 
     result = ""
     for line in code.split("\n"):
         n = len([*filter(bool, line.split(" "))])
+        n += 16*(len(line) > 1 and line[-1] == line[-2])
         if n >= len(interpreter.O):
             continue
         result += interpreter.O[n]
     return result
 
 def symb2btry(code):
-    """Translate a brainfuck program to brainetry."""
+    """Translate symbolic operators to brainetry."""
 
     from lorem import lorem
 
@@ -39,24 +40,30 @@ def symb2btry(code):
             result += c
         if c in interpreter.O:
             i = interpreter.O.index(c)
-            ops_is.append(i)
-            if i > len(source):
+            mi, bi = divmod(i, 16)
+            ops_is.append((bi, mi))
+            if bi > len(source):
                 source += lorem[::]
-            new = " ".join(source[:i])
-            source = source[i:]
+            new = " ".join(source[:bi])
+            if mi&1:
+                new += new[-1]
+            source = source[bi:]
             result += new + "\n"
     result = result[:-1]
 
     return ops_is, result
 
 def golf(inp):
-    """Golf a Brainetry program."""
+    """Golf a brainetry program."""
 
     r = ""
     for line in inp.split("\n"):
         ran = range(len([*filter(bool, line.split(" "))]))
-        ran = ["abcdefghijklm"[i] for i in ran]
-        r += " ".join(ran) + "\n"
+        ran = ["abcdefghijklmno"[i] for i in ran]
+        r += " ".join(ran)
+        if len(line) > 1 and line[-1] == line[-2]:
+            r += r[-1]
+        r += "\n"
     r = r[:-1]
     return r
 
