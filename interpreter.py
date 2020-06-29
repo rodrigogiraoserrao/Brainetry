@@ -23,6 +23,6 @@ def I(l,i,p=0,m=[0],o="",r=0,de=0,_=None):
 
 def E(c,de=0,env=None):
  env=env or{}; G=env.get; _w=G("W",256); _lo=G("LO",False)
- _W=lambda v: (_w and v%_w) or v; _LO=lambda c,o: (_lo and print(c,end=""))or o+c; _=[_W,_LO]
+ _W=lambda v: (_w and v%_w) or v; _LO=lambda c,o: (_lo and print(c,end="",flush=True))or o+c; _=[_W,_LO]
  l=[O[16*(len(l)>1 and l[-1]==l[-2])+len([*filter(bool,l.split(" "))])]for l in c.split("\n")]
  i,p,m,o=I(l,input(" inp >> ")if "," in l else"",r=0,de=de,_=_); (_lo and print()); return i,p,m,o
