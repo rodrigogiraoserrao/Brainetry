@@ -71,8 +71,8 @@ def golf(inp):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("source", help="source code/file to the brainetry CLI")
-    parser.add_argument("-d", "--debug", action="count", default=0,
-        help="define debug level with -d, -dd or -ddd"
+    parser.add_argument("-d", "--debug", metavar="level", default=0, type=int,
+        help="define debug nest level"
     )
     parser.add_argument(
         "-w", "--wrap-at", metavar="cell_size", type=int, default=256,

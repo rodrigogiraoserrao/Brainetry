@@ -5,7 +5,7 @@ def mpp(m,p=0): return ("(..., "*((li:=max(0,p-7))>0) + "["*(li==0) +
 def I(l,i,p=0,m=[0],o="",r=0,de=0,_=None):
  _W,_LO=_
  while l:
-  if de>1: print(f"{r}: m[{p}]={m[p]} @ {mpp(m,p)}; inp='{lpp(i)}'\n{lpp(l)}")or(de<3 or input())
+  if de>r: print(f"{r}: m[{p}]={m[p]} @ {mpp(m,p)}; inp='{lpp(i)}'\n{lpp(l)}")or input()
   n,*l=l; n=Oi(n)
   if n in[0,1]: p=n*(len(m)-1)
   elif n in[2,3,18,19]:
