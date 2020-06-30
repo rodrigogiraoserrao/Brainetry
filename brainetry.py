@@ -78,11 +78,8 @@ if __name__ == "__main__":
         "-w", "--wrap-at", metavar="cell_size", type=int, default=256,
         help="cells wrap at this value (defaults to 256); use 0 for no wrapping"
     )
-    parser.add_argument("--live-output", action="store_true", default=False,
-        help="force program execution to print output while running"
-    )
     parser.add_argument(
-        "-o", "--output", metavar="file", help="redirect output to file"
+        "-o", "--output", metavar="file", help="also save output to file"
     )
 
     group = parser.add_mutually_exclusive_group()
@@ -123,16 +120,11 @@ if __name__ == "__main__":
             print(f"Golfed from {len(inp)} to {len(r)} bytes.")
         else:
             env = {
-                "LO": args.live_output,
                 "W": args.wrap_at,
             }
-            i, p, m, o = interpreter.E(inp, de=args.debug, env=env)
-            if args.live_output:
-                o = "(Full program output >>>\n" + o + "\n<<<)"
-            print(o)
+            i, p, m, r = interpreter.E(inp, de=args.debug, env=env)
             if args.debug:
                 print(f"Final state: m[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
-            r = o
 
         if (outfile := args.output) and r:
             with open(outfile, "w") as f:
