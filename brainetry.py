@@ -74,9 +74,11 @@ if __name__ == "__main__":
     parser.add_argument("-d", "--debug", metavar="level", type=int, nargs="?", const=0,
         help="debug [define nest level]"
     )
-    parser.add_argument(
-        "-w", "--wrap-at", metavar="cell_size", type=int, default=256,
+    parser.add_argument("-w", "--wrap-at", metavar="cell_size", type=int, default=256,
         help="cells wrap at this value (defaults to 256); use 0 for no wrapping"
+    )
+    parser.add_argument("--numeric-io", action="store_true", default=False,
+        help="whether I/O should act on numbers (defaults to false)"
     )
     parser.add_argument(
         "-o", "--output", metavar="file", help="also save output to file"
@@ -121,6 +123,7 @@ if __name__ == "__main__":
         else:
             env = {
                 "W": args.wrap_at,
+                "NIO": args.numeric_io,
             }
             debug = args.debug or 0
             i, p, m, r = interpreter.E(inp, de=debug, env=env)
