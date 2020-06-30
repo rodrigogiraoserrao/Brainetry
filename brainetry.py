@@ -4,7 +4,6 @@ Command Line Interface (CLI) for the Brainetry programming language.
 """
 
 import argparse
-import os
 import sys
 
 import interpreter
@@ -36,6 +35,7 @@ def symb2btry(code):
     source = lorem[::]
     ops_is = []
     for c in code:
+        print(c)
         if c == "\n":
             result += c
         if c in interpreter.O:
@@ -71,8 +71,8 @@ def golf(inp):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("source", help="source code/file to the brainetry CLI")
-    parser.add_argument("-d", "--debug", metavar="level", default=0, type=int,
-        help="define debug nest level"
+    parser.add_argument("-d", "--debug", metavar="level", type=int, nargs="?", const=0,
+        help="debug [define nest level]"
     )
     parser.add_argument(
         "-w", "--wrap-at", metavar="cell_size", type=int, default=256,
@@ -96,9 +96,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     if args.source:
         # Get input from the correct source
-        if args.source.endswith(".bf") or args.source.endswith(".btry"):
+        if args.source.endswith(".sbtry") or args.source.endswith(".btry"):
             print("(Brainetry CLI: reading source code from file.)")
-            with open(args.source, "r") as f:
+            with open(args.source, "r", encoding="utf8") as f:
                 inp = f.read()
         else:
             print("(Brainetry CLI: assuming literal input.)")
@@ -122,10 +122,14 @@ if __name__ == "__main__":
             env = {
                 "W": args.wrap_at,
             }
-            i, p, m, r = interpreter.E(inp, de=args.debug, env=env)
-            if args.debug:
-                print(f"Final state: m[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
+            debug = args.debug or 0
+            i, p, m, r = interpreter.E(inp, de=debug, env=env)
+            if args.debug is not None:
+                print(f"Final state:")
+                print(f"\tm[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
+                print(f"Input left to consume: '{interpreter.lpp(i)}'")
+                print(f"Output produced: '{r}'")
 
         if (outfile := args.output) and r:
-            with open(outfile, "w") as f:
+            with open(outfile, "w", encoding="utf8") as f:
                 f.write(r)
