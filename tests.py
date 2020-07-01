@@ -24,6 +24,18 @@ class TestBrain(unittest.TestCase):
             self.assertEqual(brainetry.btry2symb(' '.join(['test']*k)), interpreter.O[k])
         self.assertEqual(brainetry.btry2symb('test test test test'), '+')
 
+    def test_bf(self):
+        bf_code = '''
+        +++++ +++++
+        [> +++++ ++ > +++++ +++++ > +++ > + <<<< -]
+        > ++ . > + . +++++ ++ .. +++ . > ++ .
+        << +++++ +++++ +++++ . > . +++ .
+        ----- - . ----- --- . > + . > .
+        '''
+        btry_code = brainetry.symb2btry(bf_code.replace('\n', '').replace(' ', ''))[-1]
+        i, p, m, o = interpreter.E(btry_code)
+        self.assertEqual(o.strip(), 'Hello World!')
 
+        
 if __name__ == '__main__':
     unittest.main()
