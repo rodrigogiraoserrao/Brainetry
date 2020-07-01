@@ -42,7 +42,9 @@ If you want to find out more about **brainetry**, head over to this repo's [wiki
 
 ## Contributors
 
-So far, the only contributor to this project has been [RojerGS] but contributions are much welcome. Feel free to [open an issue] or [make a PR] if you have anything to discuss/add!
+I, [RojerGS], have developed most of what **brainetry** is. I would also like to thank [bangyen] for implementing `±` and `∓` in [#6](https://github.com/RojerGS/Brainetry/pull/6).
+
+Feel free to [open an issue] or [make a PR] if you have anything to discuss/add!
 
 [replit]: https://repl.it/github/rojergs/brainetry
 [brainf*ck]: https://esolangs.org/wiki/Brainfuck
@@ -53,3 +55,5 @@ So far, the only contributor to this project has been [RojerGS] but contribution
 [open an issue]: https://github.com/RojerGS/Brainetry/issues/new
 [make a PR]: https://github.com/RojerGS/Brainetry/compare
 [wiki]: https://github.com/RojerGS/Brainetry/wiki
+
+[bangyen]: https://github.com/bangyen
