@@ -7,7 +7,7 @@ btry_path = os.path.dirname(__file__) + r'/btry/'
 file_list = list(map(lambda s: str(s)[12:-2], os.scandir(btry_path)))
 
 
-class TestAuto(unittest.TestCase):
+class TestBrain(unittest.TestCase):
     def test_hello_world(self):
         with open(btry_path + 'hello_world.btry', "r", encoding="utf8") as f:
             inp = f.read()
@@ -20,12 +20,10 @@ class TestAuto(unittest.TestCase):
         self.assertEqual(p, 0)
 
     def test_to_sym(self):
-        for k in range(len(interpreter.operations)):
-            self.assertEqual(brainetry.btry2symb(' '.join(['test']*k)), interpreter.operations[k])
+        for k in range(len(interpreter.O)):
+            self.assertEqual(brainetry.btry2symb(' '.join(['test']*k)), interpreter.O[k])
         self.assertEqual(brainetry.btry2symb('test test test test'), '+')
-
 
 
 if __name__ == '__main__':
     unittest.main()
-
