@@ -1,4 +1,4 @@
-import sys; O="«»><+-,.[]()      ≥≤  ;:±∓"; Oi=O.index
+import sys; O="«»><+-,.[]()±∓    ≥≤  ;:"; Oi=O.index
 lpp=lambda l:"".join(map(str, l)); ext=lambda m,p:([0]*(p<0)+m+[0]*(p==len(m)),max(0,p))
 def mpp(m,p=0): return ("(..., "*((li:=max(0,p-7))>0) + "["*(li==0) +
  str(m[li:(ri:=p+8)])[1:-1] + "]"*(ri>=len(m)) + ", ...)"*(ri<len(m)))
