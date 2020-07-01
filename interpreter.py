@@ -3,8 +3,8 @@ lpp=lambda l:"".join(map(str, l)); ext=lambda m,p:([0]*(p<0)+m+[0]*(p==len(m)),m
 def mpp(m,p=0): return ("(..., "*((li:=max(0,p-7))>0) + "["*(li==0) +
  str(m[li:(ri:=p+8)])[1:-1] + "]"*(ri>=len(m)) + ", ...)"*(ri<len(m)))
 
-def I(l,i=None,p=0,m=[0],o="",r=0,de=0,_=None):
- _W,_eof,_NI,_NO=_
+def I(l,i=None,p=0,m=None,o="",r=0,de=0,_=None):
+ _W,_eof,_NI,_NO=_; m=m or[0]
  while l:
   if de>r: print(f"{r}: m[{p}]={m[p]} @ {mpp(m,p)}; inp='{lpp(i)}'; out='{lpp(o)}'\n{lpp(l)}")or input()
   n,*l=l; n=Oi(n); f=True
