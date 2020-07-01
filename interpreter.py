@@ -22,7 +22,7 @@ def I(l,i=None,p=0,m=[0],o="",r=0,de=0,_=None):
    g=[t:=t+(Oi(k)==8+d)-(Oi(k)==9+d)for k in l].index(0)
    while m[p] and f:i,p,m,o=I(l[:g+1],i,p,m,o,r+1,de,_); f=n==8
    l=l[g:]
-  elif n in[12,13]: m[p]=sorted([0,m[p]+1-[12,0,13].index(n),255])[1]; m[p]=_W(m[p])
+  elif n in[12,13]: m[p]=sorted([0,m[p]+1-[12,0,13].index(n),255])[1]
  return i,p,m,o
 
 def E(c,de=0,env=None):
