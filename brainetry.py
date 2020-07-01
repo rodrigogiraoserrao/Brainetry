@@ -35,7 +35,7 @@ def symb2btry(code):
     source = lorem[::]
     ops_is = []
     for c in code:
-        print(c)
+        # print(c)
         if c == "\n":
             result += c
         if c in interpreter.O:
