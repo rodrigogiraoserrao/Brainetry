@@ -35,7 +35,6 @@ def symb2btry(code):
     source = lorem[::]
     ops_is = []
     for c in code:
-        print(c)
         if c == "\n":
             result += c
         if c in interpreter.O:
@@ -130,7 +129,10 @@ if __name__ == "__main__":
             if args.debug is not None:
                 print(f"Final state:")
                 print(f"\tm[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
-                print(f"Input left to consume: '{interpreter.lpp(i)}'")
+                if i is None:
+                    print("No input was consumed by the program.")
+                else:
+                    print(f"Input left to consume: '{interpreter.lpp(i)}'")
                 print(f"Output produced: '{r}'")
 
         if (outfile := args.output) and r:
