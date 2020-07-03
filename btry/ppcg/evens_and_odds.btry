@@ -1,0 +1,34 @@
+"Check if an array
+(or equivalent)
+has the same number
+of odd
+and even
+numbers - Code Golf Edition !"
+That is the title of the codegolf.stackexchange.com challenge
+that this brainetry program solves. Once more, with
+no shame at all ,
+I am piggy backing on someone else's answer.
+This time, Surculose Sputum's answer.
+Oh boy!
+You can check the original answer over here: https://codegolf.stackexchange.com/a/205621/75323
+Go upvote that!
+This is a very literal port of that answer.
+I am pretty
+sure I could
+have used brainetry's builtins
+to make this easier, like » or ≥,
+except that
+would mean I would have to think... ugh... nope!
+For now
+I will stick to the low
+hanging fruit just to show that brainetry is out.
+If this is
+the first time
+you find a brainetry program, welcome! By now
+you probably understood you are
+allowed to write
+pretty much anything as source.
+(source code)
+You only have to write lines of correct size
+and with the
+correct line modifiers. (That's a recent addition.)
