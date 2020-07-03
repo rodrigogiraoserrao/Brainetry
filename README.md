@@ -42,7 +42,7 @@ If you want to find out more about **brainetry**, head over to this repo's [wiki
 
 ## Contributors
 
-I, [RojerGS], have developed most of what **brainetry** is. I would also like to thank [bangyen] for implementing `±` and `∓` in [#6](https://github.com/RojerGS/Brainetry/pull/6).
+I, [RojerGS], would like to thank [bangyen] for their contributions (cf. [#6](https://github.com/RojerGS/Brainetry/pull/6) for example).
 
 Feel free to [open an issue] or [make a PR] if you have anything to discuss/add!
 
