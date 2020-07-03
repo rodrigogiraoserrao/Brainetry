@@ -2,9 +2,9 @@
 
 This folder holds brainetry programs to solve challenges from the [codegolf](codegolf.stackexchange.com) stack exchange website.
 
-## Listing
+## Answer listing
 
-[Check if an array (or equivalent) has the same number of odd and even numbers - Code Golf Edition!](https://codegolf.stackexchange.com/a/206710/75323)
+[Check if an array (or equivalent) has the same number of odd and even numbers - Code Golf Edition!](https://codegolf.stackexchange.com/a/206710/75323) - [`evens_and_odds.btry`](./evens_and_odds.btry)
 
 ## Answer template
 
