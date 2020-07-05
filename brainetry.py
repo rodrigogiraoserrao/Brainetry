@@ -33,14 +33,14 @@ def symb2btry(code):
 
     result = ""
     source = lorem[::]
-    ops_is = []
+    hexs = []
     for c in code:
         if c == "\n":
             result += c
         if c in interpreter.O:
             i = interpreter.O.index(c)
             mi, bi = divmod(i, 16)
-            ops_is.append((bi, mi))
+            hexs.append(f"{i:02x}")
             if bi > len(source):
                 source += lorem[::]
             new = " ".join(source[:bi])
@@ -50,7 +50,7 @@ def symb2btry(code):
             result += new + "\n"
     result = result[:-1]
 
-    return ops_is, result
+    return hexs, result
 
 def golf(inp):
     """Golf a brainetry program."""
@@ -109,8 +109,8 @@ if __name__ == "__main__":
             r = btry2symb(inp)
             print(r)
         elif args.symb2btry:
-            ops, r = symb2btry(inp)
-            print(ops)
+            hexs, r = symb2btry(inp)
+            print(f"Hex values: {', '.join(hexs)}")
             print(r)
         elif args.golf:
             if not args.source.endswith(".btry"):
