@@ -14,6 +14,22 @@ if __name__ == "__main__":
 from brainetry import symb2btry
 from interpreter import E
 
+class FakeStdin:
+    """Simple class to act as a dummy stdin that reads a pre-defined string."""
+    def __init__(self, string):
+        self.string = string
+    def read(self):
+        return self.string
+
+def save_stdin(func):
+    """Decorator to wrap a function that might redirect stdin temporarily."""
+    def wrapper(*args, **kwargs):
+        stdin = sys.stdin
+        ret = func(*args, **kwargs)
+        sys.stdin = stdin
+        return ret
+    return wrapper
+
 class TestBrainfuckOps(unittest.TestCase):
     """Test the eight operators that are inherited from brainf*ck."""
 
@@ -57,3 +73,25 @@ class TestBrainfuckOps(unittest.TestCase):
                     self.assertEqual(m, mem)
                     self.assertIsNone(i)
                     self.assertEqual(o, "")
+
+    @save_stdin
+    def test_input(self):
+        """Tests the input operator."""
+
+        alphabet = "abcdefghijklmnopqrstuvwxyz"
+        chars = [*alphabet]
+        for k in range(len(alphabet)+5):
+            sys.stdin = FakeStdin(alphabet)
+            _, code = symb2btry(","*k)
+            i, p, m, o = E(code)
+            with self.subTest(k=k, input=alphabet[:k]):
+                if k:
+                    self.assertEqual(chars[k:], i)
+                else:
+                    self.assertIsNone(i)
+                self.assertEqual(p, 0)
+                if k and k <= len(alphabet):
+                    self.assertEqual(m, [ord(alphabet[k-1])])
+                elif k > len(alphabet):
+                    self.assertEqual(m, [0])
+                self.assertEqual(o, "")
