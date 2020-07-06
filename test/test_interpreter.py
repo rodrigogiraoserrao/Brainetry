@@ -26,7 +26,7 @@ class TestBrainfuckOps(unittest.TestCase):
                 ("+-"*r, [0]),
                 ("+"*r+"-"*r, [0]),
                 ("-+"*r, [0]),
-                ("-"*r+"+"*r, [0])
+                ("-"*r+"+"*r, [0]),
             ]
             for symb, mem in cases:
                 _, code = symb2btry(symb)
@@ -34,5 +34,26 @@ class TestBrainfuckOps(unittest.TestCase):
                 with self.subTest(symb=symb):
                     self.assertEqual(p, 0)
                     self.assertEqual(m, mem)
-                    self.assertIsNone(i, None)
+                    self.assertIsNone(i)
+                    self.assertEqual(o, "")
+
+    def test_right_left(self):
+        """Tests the usage of the left/right operators."""
+
+        for r in range(1, 20):
+            cases = [
+                (">"*r, [0]*(r+1), r),
+                ("<"*r, [0]*(r+1), 0),
+                ("><"*r, [0, 0], 0),
+                ("<>"*r, [0, 0], 1),
+                (">"*r+"<"*r, [0]*(r+1), 0),
+                ("<"*r+">"*r, [0]*(r+1), r),
+            ]
+            for symb, mem, ptr in cases:
+                _, code = symb2btry(symb)
+                i, p, m, o = E(code)
+                with self.subTest(symb=symb):
+                    self.assertEqual(p, ptr)
+                    self.assertEqual(m, mem)
+                    self.assertIsNone(i)
                     self.assertEqual(o, "")
