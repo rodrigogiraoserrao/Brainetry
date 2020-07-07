@@ -2,6 +2,7 @@
 This module tests the brainetry interpreter.
 """
 
+import io
 import pathlib
 import sys
 import unittest
@@ -14,17 +15,6 @@ if __name__ == "__main__":
 from brainetry import symb2btry
 from interpreter import E
 
-class FakeStdin:
-    """Simple class to act as a dummy stdin that reads a pre-defined string."""
-    def __init__(self, string):
-        self.string = string
-    def read(self):
-        return self.string
-
-class FakeStdout:
-    """Simple class to act as a dummy stdout that does nothing."""
-    def write(self, string):
-        pass
 
 def save_stdin(func):
     """Decorator to restore default stdin after we leave the function."""
@@ -39,7 +29,7 @@ def mute_stdout(func):
     """Decorator to redirect stdout during the function call."""
     def wrapper(*args, **kwargs):
         stdout = sys.stdout
-        sys.stdout = FakeStdout()
+        sys.stdout = io.StringIO()
         ret = func(*args, **kwargs)
         sys.stdout = stdout
         return ret
@@ -97,7 +87,7 @@ class TestBrainfuckOps(unittest.TestCase):
         chars = [*alphabet]
         ords = [ord(char) for char in chars] + [0]*5
         for k in range(len(alphabet)+5):
-            sys.stdin = FakeStdin(alphabet)
+            sys.stdin = io.StringIO(alphabet)
             symb = ","*k
             _, code = symb2btry(symb)
             i, p, m, o = E(code)
@@ -113,6 +103,7 @@ class TestBrainfuckOps(unittest.TestCase):
                     self.assertEqual(m, [0])
                 self.assertEqual(o, "")
 
+            sys.stdin = io.StringIO(alphabet)
             symb = ",>"*k
             _, code = symb2btry(symb)
             i, p, m, o = E(code)
@@ -145,7 +136,7 @@ class TestBrainfuckOps(unittest.TestCase):
         for string in strings:
             chars = [*string]
             for k in range(1, len(string)+5):
-                sys.stdin = FakeStdin(string)
+                sys.stdin = io.StringIO(string)
                 symb = ",."*k
                 _, code = symb2btry(symb)
                 i, p, m, o = E(code)
