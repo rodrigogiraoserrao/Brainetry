@@ -16,7 +16,7 @@ def I(l,i=None,p=0,m=None,o="",r=0,de=0,_=None):
    ((i:=sys.stdin.read()) and _eof==[0] and (i:=i.split("\n")[:-1]))if i is None else i
    while f or(m[p]and n>6): f or (p:=p+1); m,p=ext(m,p); c,*i=i or _eof; m[p]=_W(_NI(c)); f=False
   elif n in[7,23]:
-   while (f and n==7)or(m[p]and n>7): print(c:=_NO(m[p]),end="",flush=True); o+=c; n==7 or(p:=p+1); m,p=ext(m,p); f=False
+   while (f and n==7)or(m[p]and n>7): sys.stdout.write(c:=_NO(m[p])); o+=c; n==7 or(p:=p+1); m,p=ext(m,p); f=False
   elif n in[8,10]:
    d=2*(n==10); t=1
    g=[t:=t+(Oi(k)==8+d)-(Oi(k)==9+d)for k in l].index(0)
