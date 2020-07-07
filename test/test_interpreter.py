@@ -51,11 +51,10 @@ class TestBrainfuckOps(unittest.TestCase):
             ]
             for symb, mem in cases:
                 _, code = symb2btry(symb)
-                i, p, m, o = E(code)
+                p, m, o = E(code)
                 with self.subTest(symb=symb):
                     self.assertEqual(p, 0)
                     self.assertEqual(m, mem)
-                    self.assertIsNone(i)
                     self.assertEqual(o, "")
 
     def test_right_left(self):
@@ -72,11 +71,10 @@ class TestBrainfuckOps(unittest.TestCase):
             ]
             for symb, mem, ptr in cases:
                 _, code = symb2btry(symb)
-                i, p, m, o = E(code)
+                p, m, o = E(code)
                 with self.subTest(symb=symb):
                     self.assertEqual(p, ptr)
                     self.assertEqual(m, mem)
-                    self.assertIsNone(i)
                     self.assertEqual(o, "")
 
     @save_stdin
@@ -90,12 +88,8 @@ class TestBrainfuckOps(unittest.TestCase):
             sys.stdin = io.StringIO(alphabet)
             symb = ","*k
             _, code = symb2btry(symb)
-            i, p, m, o = E(code)
+            p, m, o = E(code)
             with self.subTest(k=k, symb=symb, input=alphabet):
-                if k:
-                    self.assertEqual(i, chars[k:])
-                else:
-                    self.assertIsNone(i)
                 self.assertEqual(p, 0)
                 if k and k <= len(alphabet):
                     self.assertEqual(m, [ords[k-1]])
@@ -106,12 +100,8 @@ class TestBrainfuckOps(unittest.TestCase):
             sys.stdin = io.StringIO(alphabet)
             symb = ",>"*k
             _, code = symb2btry(symb)
-            i, p, m, o = E(code)
+            p, m, o = E(code)
             with self.subTest(k=k, symb=symb, input=alphabet):
-                if k:
-                    self.assertEqual(i, chars[k:])
-                else:
-                    self.assertIsNone(i)
                 self.assertEqual(p, k)
                 self.assertEqual(m, ords[:k]+[0])
                 self.assertEqual(o, "")
@@ -122,8 +112,7 @@ class TestBrainfuckOps(unittest.TestCase):
         """Test the output operator."""
 
         _, code = symb2btry("...")
-        i, p, m, o = E(code)
-        self.assertIsNone(i)
+        p, m, o = E(code)
         self.assertEqual(p, 0)
         self.assertEqual(m, [0])
         self.assertEqual(o, "\u0000"*3)
@@ -134,14 +123,12 @@ class TestBrainfuckOps(unittest.TestCase):
             "knees and toes, knees and toes!"
         ]
         for string in strings:
-            chars = [*string]
             for k in range(1, len(string)+5):
                 sys.stdin = io.StringIO(string)
                 symb = ",."*k
                 _, code = symb2btry(symb)
-                i, p, m, o = E(code)
+                p, m, o = E(code)
                 with self.subTest(k=k, symb=symb, input=string):
-                    self.assertEqual(i, chars[k:])
                     self.assertEqual(p, 0)
                     if k > len(string):
                         self.assertEqual(m, [0])
