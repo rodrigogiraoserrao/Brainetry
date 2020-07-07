@@ -26,7 +26,7 @@ def I(l,i=None,p=0,m=None,o="",r=0,de=0,_=None):
 
 def E(c,de=0,env=None):
  env=env or{}; G=env.get; _w=G("W",256); _nio=G("NIO",False)
- _W=lambda v: (_w and v%_w) or (not _w and v); _O=lambda c:1+sys.stdout.write(o:=(f"{c}\n"if _nio else chr(c)))and o
+ _W=lambda v:int((_w and v%_w) or (not _w and v)); _O=lambda c:1+sys.stdout.write(o:=(f"{c}\n"if _nio else chr(c)))and o
  _I=(lambda:(r:=sys.stdin.readline())and int(r)or 0)if _nio else(lambda:(r:=sys.stdin.read(1))and ord(r)or 0)
  _=[_W,_I,_O]
  l=[O[16*(len(l)>1 and l[-1]==l[-2])+len([*filter(bool,l.split(" "))])]for l in c.split("\n")]

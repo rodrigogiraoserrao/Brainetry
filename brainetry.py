@@ -125,14 +125,10 @@ if __name__ == "__main__":
                 "NIO": args.numeric_io,
             }
             debug = args.debug or 0
-            i, p, m, r = interpreter.E(inp, de=debug, env=env)
+            p, m, r = interpreter.E(inp, de=debug, env=env)
             if args.debug is not None:
                 print(f"Final state:")
                 print(f"\tm[{p}]={m[p]} @ {interpreter.mpp(m, p)}")
-                if i is None:
-                    print("No input was consumed by the program.")
-                else:
-                    print(f"Input left to consume: '{interpreter.lpp(i)}'")
                 print(f"Output produced: '{r}'")
 
         if (outfile := args.output) and r:
