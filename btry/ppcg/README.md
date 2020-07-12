@@ -8,7 +8,7 @@ This folder holds brainetry programs to solve challenges from the [codegolf](cod
 
 [Is this even or odd?](https://codegolf.stackexchange.com/a/206829/75323) - [`even_or_odd.btry`](./even_or_odd.btry)
 
-[Count up forever]() - [infinite_count.btry](./infinite_count.btry)
+[Count up forever](https://codegolf.stackexchange.com/a/207006/75323) - [infinite_count.btry](./infinite_count.btry)
 
 ## Answer template
 
