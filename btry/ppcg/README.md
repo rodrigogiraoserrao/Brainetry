@@ -8,6 +8,8 @@ This folder holds brainetry programs to solve challenges from the [codegolf](cod
 
 [Is this even or odd?](https://codegolf.stackexchange.com/a/206829/75323) - [`even_or_odd.btry`](./even_or_odd.btry)
 
+[Count up forever]() - [infinite_count.btry](./infinite_count.btry)
+
 ## Answer template
 
 For my convenience, here's an answer template that I use quite often.
@@ -17,11 +19,12 @@ For my convenience, here's an answer template that I use quite often.
 
 Golfed version:
 
-
 The golfed version was adapted from the program at the end of this answer. To try this online you can
 
   - head over to this [replit] link, copy&paste the code into the `btry/replit.btry` file and hit the green "Run" button;
   - clone the [github repo][brainetry] and from your terminal run `./brainetry btry/ppcg/XXX.btry`.
+
+Original program:
 
 [Brainetry]: https://github.com/rojergs/brainetry
 [replit]: https://repl.it/github/rojergs/brainetry
