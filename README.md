@@ -2,6 +2,8 @@
 
 [![Run on Repl.it](https://repl.it/badge/github/rojergs/brainetry)][replit]
 
+**This repository is now archived. While I liked the concept of Brainetry, I don't think it was well applied to brainfuck.**
+
 ## What is brainetry?
 
 **Brainetry** is an esoteric programming language that was inspired by the [brainf*ck] and [poetic] programming languages.
